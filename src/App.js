@@ -3,6 +3,7 @@ import './App.css';
 import SearchIcon from './Search.svg';
 import MovieCard from './MovieCard.jsx';
 
+
 const API_URL = 'http://www.omdbapi.com?apikey=REDACTED';
 
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
         </div>
       ) : (
         <div className="empty">
-          <h2> No movies found</h2>
+          <h2> No movies</h2>
         </div>
       )}
     </div>
