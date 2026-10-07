@@ -2,16 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="MovieLand - search movies with the OMDb API" />
+    <title>MovieLand | Search, filter and save movies</title>
+    <meta
+      name="description"
+      content="MovieLand is a movie search app with filters, favorites and a watchlist. Browse a built-in catalogue or connect your own OMDb key for live search."
+    />
+    <meta name="theme-color" content="#0f1117" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
-    <title>MovieLand</title>
+    <link rel="canonical" href="https://shishir19999.github.io/Movieland-api/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieLand" />
+    <meta property="og:title" content="MovieLand | Search, filter and save movies" />
+    <meta
+      property="og:description"
+      content="Browse a curated catalogue or search the OMDb database. Filter by genre, year and rating, and keep favorites and a watchlist."
+    />
+    <meta property="og:url" content="https://shishir19999.github.io/Movieland-api/" />
+    <meta property="og:image" content="https://shishir19999.github.io/Movieland-api/logo512.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <script>
+      // apply the saved or system theme before first paint to avoid a flash
+      try {
+        var t = JSON.parse(localStorage.getItem('ml:theme'))
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = t
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>MovieLand needs JavaScript to run. Please enable it and reload.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
