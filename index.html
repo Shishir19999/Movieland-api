@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MovieLand | Search, filter and save movies</title>
+    <meta
+      name="description"
+      content="MovieLand is a movie search app with filters, favorites and a watchlist. Browse a built-in catalogue or connect your own OMDb key for live search."
+    />
+    <meta name="theme-color" content="#0f1117" />
+    <link rel="icon" href="/Movieland-api/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/Movieland-api/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/Movieland-api/logo192.png" />
+    <link rel="manifest" href="/Movieland-api/manifest.json" />
+    <link rel="canonical" href="https://shishir19999.github.io/Movieland-api/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieLand" />
+    <meta property="og:title" content="MovieLand | Search, filter and save movies" />
+    <meta
+      property="og:description"
+      content="Browse a curated catalogue or search the OMDb database. Filter by genre, year and rating, and keep favorites and a watchlist."
+    />
+    <meta property="og:url" content="https://shishir19999.github.io/Movieland-api/" />
+    <meta property="og:image" content="https://shishir19999.github.io/Movieland-api/logo512.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <script>
+      // apply the saved or system theme before first paint to avoid a flash
+      try {
+        var t = JSON.parse(localStorage.getItem('ml:theme'))
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = t
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <script type="module" crossorigin src="/Movieland-api/assets/index-Bl1YVy4U.js"></script>
+    <link rel="stylesheet" crossorigin href="/Movieland-api/assets/index-PFuM782Q.css">
+  </head>
+  <body>
+    <noscript>MovieLand needs JavaScript to run. Please enable it and reload.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
