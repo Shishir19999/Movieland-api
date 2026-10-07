@@ -1,30 +1,36 @@
 # MovieLand
 
-A React (Vite) movie search app backed by the [OMDb API](https://www.omdbapi.com/).
+A React + Vite movie browser. Out of the box it runs in **demo mode** with a built-in catalogue of 60 films and illustrated posters, so it works offline with no account. Paste your own [OMDb](https://www.omdbapi.com/) key to switch to live search of the full database.
 
-## Setup
+**Live demo:** https://shishir19999.github.io/Movieland-api/
 
-1. Get a free API key at https://www.omdbapi.com/apikey.aspx
-2. Copy `.env.example` to `.env` and set your key:
+## Features
 
-   ```
-   VITE_OMDB_KEY=your_omdb_api_key_here
-   ```
+- Debounced search with title suggestions and a recently-searched list (`/` focuses the search box)
+- Filters for genre, decade and minimum rating, plus sorting (relevance, rating, year, title)
+- Details dialog with plot, cast, director, ratings, trailer search link and a shareable link (`#/m/<id>`)
+- Favorites and watchlist, saved in your browser
+- "Surprise me" random pick
+- Load-more pagination, skeleton loading states, empty and error states (invalid key, rate limit)
+- Light and dark theme (follows the system, remembered), responsive from 320px, keyboard accessible
 
-   `.env` is git-ignored. Restart the dev server after changing it. (Vite only exposes variables prefixed with `VITE_`; this replaces the old CRA `REACT_APP_OMDB_KEY`.)
-3. Install and run:
+## Run locally
 
-   ```bash
-   npm install
-   npm run dev      # Vite dev server (default http://localhost:5173)
-   npm run build    # production build into dist/
-   npm run preview  # serve the production build
-   npm run lint
-   ```
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm test           # unit tests (vitest) for the data and filter logic
+npm run lint
+npm run build      # production build into dist/
+npm run build:pages  # GitHub Pages build (base /Movieland-api/) into dist/
+```
 
-Search by typing a title and pressing Enter or clicking the search icon. Results with no poster show a generated placeholder.
+## Using your own OMDb key
 
-Note: the key is embedded in the client bundle at build time, so it is visible to anyone using the site.
+1. Get a free key at https://www.omdbapi.com/apikey.aspx
+2. Either open **Settings** (gear icon, or the Demo/Live pill) in the app and paste it. It is stored only in your browser's localStorage and sent only to omdbapi.com.
+3. Or, for local builds, copy `.env.example` to `.env` and set `VITE_OMDB_KEY`. `.env` is git-ignored. The `build:pages` script ignores `.env` and never embeds a key, so the published site can only use a key a visitor enters.
 
+## Parallax and motion
 
-Migrated from Create React App (react-scripts, deprecated) to Vite 8 + React 19. Requires Node ^20.19 or >=22.12.
+The hero banner parallax, scroll-reveal rows and poster tilt use only `transform` and `opacity`, driven by IntersectionObserver and requestAnimationFrame with no libraries. They are disabled under `prefers-reduced-motion` and on small or low-power screens.
