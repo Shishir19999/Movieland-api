@@ -66,12 +66,14 @@ h2,
 h3,
 p,
 ul,
+ol,
 dl,
 dd {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
@@ -658,6 +660,7 @@ main:focus {
   border-radius: var(--radius);
   text-align: center;
 }
+.state h2,
 .state h3 {
   font-family: var(--serif);
   font-size: 1.25rem;

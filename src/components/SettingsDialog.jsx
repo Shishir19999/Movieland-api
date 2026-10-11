@@ -47,7 +47,7 @@ export default function SettingsDialog({ storedKey, envActive, onSave, onClear, 
           ? 'Live search is on, using the OMDb key saved in this browser.'
           : envActive
             ? 'Live search is on, using the key from your local environment.'
-            : 'You are browsing the built-in demo catalogue. Add your own OMDb key to search the full database.'}
+            : 'You are browsing the built-in sample catalogue. Add your own OMDb key to search the full database.'}
       </p>
       <form onSubmit={submit} noValidate>
         <label htmlFor="omdb-key" className="label">
@@ -95,7 +95,7 @@ export default function SettingsDialog({ storedKey, envActive, onSave, onClear, 
               className="btn btn-danger"
               onClick={() => {
                 onClear()
-                setStatus({ kind: 'ok', message: 'Key removed. Back to demo data.' })
+                setStatus({ kind: 'ok', message: 'Key removed. Back to the sample catalogue.' })
               }}
             >
               Remove key
