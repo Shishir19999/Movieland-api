@@ -15,8 +15,8 @@ export class OmdbError extends Error {
 }
 
 export const ERROR_COPY = {
-  'invalid-key': 'That OMDb API key was not accepted. Check it in Settings, or switch back to demo data.',
-  'rate-limit': 'The OMDb daily request limit has been reached for this key. Try again tomorrow, use another key, or switch to demo data.',
+  'invalid-key': 'That OMDb API key was not accepted. Check it in Settings, or switch back to the sample catalogue.',
+  'rate-limit': 'The OMDb daily request limit has been reached for this key. Try again tomorrow, use another key, or switch to the sample catalogue.',
   network: 'Could not reach OMDb. Check your connection and try again.',
   'too-many': 'Too many results. Type a longer part of the title to narrow it down.',
   api: 'OMDb returned an unexpected error. Please try again.',

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useToastMessage } from '../context.jsx'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -7,6 +8,7 @@ const FOCUSABLE =
 // Adds an explicit Tab focus trap, backdrop click to close and focus restoration.
 export default function Dialog({ labelledBy, onClose, className = '', children }) {
   const ref = useRef(null)
+  const toast = useToastMessage()
 
   useEffect(() => {
     const dialog = ref.current
@@ -50,6 +52,9 @@ export default function Dialog({ labelledBy, onClose, className = '', children }
       onKeyDown={onKeyDown}
     >
       <div className="dialog-body">{children}</div>
+      <p className="sr-only" role="status">
+        {toast}
+      </p>
     </dialog>
   )
 }

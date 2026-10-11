@@ -1,4 +1,4 @@
-// Curated sample catalogue used in demo mode (no network, no API key).
+// Curated sample catalogue (no network, no API key needed).
 // Row: [title, year, genres, imdb rating, runtime (min), director, cast, plot]
 const ROWS = [
   ['The Shawshank Redemption', 1994, 'Drama', 9.3, 142, 'Frank Darabont', 'Tim Robbins, Morgan Freeman, Bob Gunton', "A quiet banker sentenced to life in prison befriends a fellow inmate and spends decades quietly planning his way back to freedom."],
@@ -72,10 +72,19 @@ const slug = (s) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
 
+const LANGUAGES = {
+  'Spirited Away': 'Japanese',
+  'Princess Mononoke': 'Japanese',
+  'Seven Samurai': 'Japanese',
+  Parasite: 'Korean',
+  Amelie: 'French',
+  'City of God': 'Portuguese',
+}
+
 export const CATALOG = ROWS.map(
   ([title, year, genres, rating, runtime, director, cast, plot]) => ({
-    id: `demo-${slug(title)}`,
-    source: 'demo',
+    id: `s-${slug(title)}`,
+    source: 'sample',
     type: 'movie',
     title,
     year,
@@ -87,6 +96,7 @@ export const CATALOG = ROWS.map(
     cast: cast.split(', '),
     plot,
     ratings: [{ source: 'IMDb', value: `${rating.toFixed(1)}/10` }],
+    language: LANGUAGES[title] || 'English',
     detailed: true,
   }),
 )
@@ -95,3 +105,7 @@ export const GENRES = [...new Set(CATALOG.flatMap((m) => m.genres))].sort()
 export const DECADES = [...new Set(CATALOG.map((m) => Math.floor(m.year / 10) * 10))].sort(
   (a, b) => b - a,
 )
+export const LANGUAGE_LIST = [...new Set(CATALOG.map((m) => m.language))].sort()
+export const CATALOG_BY_ID = new Map(CATALOG.map((m) => [m.id, m]))
+// ids used by earlier versions of the app keep working
+export const findCatalogMovie = (id) => CATALOG_BY_ID.get(String(id).replace(/^demo-/, 's-'))

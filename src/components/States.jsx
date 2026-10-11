@@ -22,7 +22,7 @@ const TITLES = {
   api: 'Something went wrong',
 }
 
-export function ErrorState({ error, onRetry, onSettings, onDemo }) {
+export function ErrorState({ error, onRetry, onSettings, onSample }) {
   const kind = error.kind || 'api'
   return (
     <div className="state" role="alert">
@@ -40,8 +40,8 @@ export function ErrorState({ error, onRetry, onSettings, onDemo }) {
           </button>
         )}
         {kind !== 'too-many' && (
-          <button type="button" className="btn" onClick={onDemo}>
-            Use demo data
+          <button type="button" className="btn" onClick={onSample}>
+            Use sample catalogue
           </button>
         )}
       </div>
@@ -49,10 +49,11 @@ export function ErrorState({ error, onRetry, onSettings, onDemo }) {
   )
 }
 
-export function EmptyState({ title, children, action }) {
+export function EmptyState({ title, children, action, level = 2 }) {
+  const H = `h${level}`
   return (
     <div className="state">
-      <h3>{title}</h3>
+      <H>{title}</H>
       {children && <p>{children}</p>}
       {action}
     </div>
